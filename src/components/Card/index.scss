@@ -264,7 +264,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(27, 51, 110), 35%);
+            color: lighten(rgb(27, 51, 110), 45%);
         }
     }
 
@@ -274,7 +274,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(24, 57, 36), 35%);
+            color: darken(rgb(24, 57, 36), 0%);
         }
     }
 
@@ -284,7 +284,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(204, 182, 81), 35%);
+            color: darken(rgb(204, 182, 81), 25%);
         }
     }
 
@@ -314,7 +314,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(57, 57, 57), 35%);
+            color: darken(rgb(57, 57, 57), 5%);
         }
     }
 
@@ -324,7 +324,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(41, 134, 22), 35%);
+            color: darken(rgb(41, 134, 22), 10%);
         }
     }
 
@@ -334,7 +334,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(175, 175, 175), 35%);
+            color: darken(rgb(175, 175, 175), 20%);
         }
     }
 
@@ -354,7 +354,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(20, 117, 0), 35%);
+            color: darken(rgb(20, 117, 0), 5%);
         }
     }
 
@@ -364,7 +364,7 @@ section main {
 
         .name,
         .type {
-            color: lighten(rgb(207, 201, 0), 50%);
+            color: darken(rgb(207, 201, 0), 20%);
         }
     }
 
@@ -544,6 +544,7 @@ section main .main-content > div p {
     opacity: 0;
     animation: opacityEffect 0.5s ease-in-out forwards;
     animation-delay: 2.5s;
+    filter: drop-shadow(0px 0px 15px var(--shadow));
 }
 
 section main .main-content > div > img {

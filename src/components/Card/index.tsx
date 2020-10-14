@@ -71,10 +71,10 @@ export default function Card({ pokemon, nextPokemon }) {
         </aside>
         <main className={`${pokemon.types[0].type.name}`}>
           <img src={`/img/pokemons/${pokemon.name}.png`} onError={handleError} alt={pokemon.name} />
-          <span className="close">
+          {/* <span className="close">
             <p>Close</p>
             <i className="fa fa-times"></i>
-          </span>
+          </span> */}
           <div className="main-content">
             <div>
               <span>
