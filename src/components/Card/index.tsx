@@ -66,6 +66,13 @@ export default function Card({ pokemon, nextPokemon }) {
     e.target.src = pokemon.sprites.front_default;
   };
 
+  const setInputBlur = () => {
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('input')[0].blur();
+    }
+    setBodyColor();
+  };
+
   const setBodyColor = () => {
     if (!window || !document) return;
     const el = document.querySelectorAll('section main');
@@ -75,9 +82,6 @@ export default function Card({ pokemon, nextPokemon }) {
     const theme = `${actualTypeColor.split(',')[4]},${actualTypeColor.split(',')[5]},${
       actualTypeColor.split(',')[6]
     }`;
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll('input')[0].blur();
-    }
     document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);
   };
 
@@ -98,10 +102,10 @@ export default function Card({ pokemon, nextPokemon }) {
   }, [searchInput]);
 
   useEffect(() => {
-    Router.events.on('routeChangeComplete', setBodyColor);
+    Router.events.on('routeChangeComplete', setInputBlur);
 
     return () => {
-      Router.events.off('routeChangeComplete', setBodyColor);
+      Router.events.off('routeChangeComplete', setInputBlur);
     };
   });
 
