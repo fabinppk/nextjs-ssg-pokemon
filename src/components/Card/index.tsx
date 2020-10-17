@@ -76,7 +76,6 @@ export default function Card({ pokemon, nextPokemon }) {
       actualTypeColor.split(',')[6]
     }`;
     if (window.innerWidth <= 768) {
-      console.log('MENOR');
       document.querySelectorAll('input')[0].blur();
     }
     document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);

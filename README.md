@@ -8,6 +8,10 @@
 
 ## Demo - https://nextjs-ssg-pokemon.vercel.app/
 
+## Design
+
+Designed based on @realvjy, HTML/CSS (desktop version) developed by @DaniloLima122 and other features developed by myself.
+
 ## Requirements
 
 For development, you will only need Node.js installed on your environement.
