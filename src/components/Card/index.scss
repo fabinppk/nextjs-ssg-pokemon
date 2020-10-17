@@ -454,38 +454,12 @@ section main > img {
 section main .main-content {
     filter: drop-shadow(0 40px 40px var(--shadow));
     padding: 4rem 0;
+    padding-bottom: 0;
     width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     position: relative;
-}
-
-section main .close {
-    justify-self: flex-end;
-    width: auto;
-    height: 20px;
-    position: absolute;
-    right: 4rem;
-    transform: translateY(-50px);
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    transition: opacity 0.5s linear;
-    cursor: pointer;
-}
-
-section main .close:hover {
-    opacity: 0.7;
-}
-
-section main .close p {
-    margin-left: 1rem;
-    font-size: 1.2rem;
-}
-
-section main .close i {
-    font-size: 1.3rem;
 }
 
 section main .main-content > div {
@@ -498,6 +472,19 @@ section main .main-content > div {
 section main .main-content > div span {
     width: 100%;
     // max-width: 410px;
+}
+
+section main .main-content .block-column {
+    display: flex;
+    flex-wrap: wrap;
+    height: initial;
+    max-height: initial;
+    min-height: initial;
+}
+
+section main .main-content .block-areas {
+    margin-top: 30px;
+    width: 50%;
 }
 
 section main .main-content > div h1 {
@@ -535,12 +522,10 @@ section main .main-content > div h3 span {
 }
 
 section main .main-content > div p {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    color: var(--very-ligh-blue-font);
-    font-weight: 100;
+    text-transform: capitalize;
+    margin-top: 5px;
+    font-size: 1rem;
     text-align: left;
-    line-height: 2rem;
     opacity: 0;
     animation: opacityEffect 0.5s ease-in-out forwards;
     animation-delay: 2.5s;

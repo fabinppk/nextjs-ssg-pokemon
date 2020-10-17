@@ -32,6 +32,28 @@ export default function Card({ pokemon, nextPokemon }) {
     return typesString;
   };
 
+  const defineAttacks = () => {
+    return pokemon.moves.map((move, i) => {
+      if (i >= 5) return;
+      return (
+        <p key={move.move.url} className="type">
+          - {move.move.name.replace(/-/g, ' ')}
+        </p>
+      );
+    });
+  };
+
+  const defineAreas = () => {
+    return pokemon.areas.map((area, i) => {
+      if (i >= 3) return;
+      return (
+        <p key={area.location_area.url} className="type">
+          - {area.location_area.name.replace(/-/g, ' ')}
+        </p>
+      );
+    });
+  };
+
   const handleError = (e) => {
     console.log(e.target);
     e.target.onerror = null;
@@ -71,10 +93,6 @@ export default function Card({ pokemon, nextPokemon }) {
         </aside>
         <main className={`${pokemon.types[0].type.name}`}>
           <img src={`/img/pokemons/${pokemon.name}.png`} onError={handleError} alt={pokemon.name} />
-          {/* <span className="close">
-            <p>Close</p>
-            <i className="fa fa-times"></i>
-          </span> */}
           <div className="main-content">
             <div>
               <span>
@@ -82,16 +100,21 @@ export default function Card({ pokemon, nextPokemon }) {
                 <h3>
                   <span className="type">{defineTtypeString()}</span>
                 </h3>
-                <p className="type">
-                  Sadness is literally the very definition and being of sarrow and gloom. She is
-                  hardly ever used because Joy is the boss and doesn't want Riley to ever be sad,
-                  even when she needs.Because of this, Joy treats Sadness badly.
-                </p>
+                <section className="block-column">
+                  <div className="block-areas">
+                    <h3 className="type">Attacks:</h3>
+                    {defineAttacks()}
+                  </div>
+                  <div className="block-areas">
+                    <h3 className="type">where to find:</h3>
+                    {defineAreas()}
+                  </div>
+                </section>
               </span>
               {/* <img src="/img/insideoutlogo.png" alt="Inside-out-logo" /> */}
             </div>
             <footer className="clips">
-              <h3 className="type">Images</h3>
+              <h3 className="type">Images:</h3>
               <div className="image-clips">{defineGalery()}</div>
             </footer>
           </div>

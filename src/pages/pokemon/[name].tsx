@@ -2,9 +2,9 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import Card from '../../components/Card';
-import { getAllPokemons, getPokemonByName } from '../../utils/requestApi';
+import { getAllPokemons, getPokemonByName, getPokemonAreas } from '../../utils/requestApi';
 
-export default function Member({ pokemon, nextPokemon }) {
+export default function Pokemon({ pokemon, nextPokemon }) {
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -21,8 +21,8 @@ export default function Member({ pokemon, nextPokemon }) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await getAllPokemons(0, 151);
 
-  const paths = response.map((pikachu) => {
-    return { params: { name: pikachu.name } };
+  const paths = response.map((pokemon) => {
+    return { params: { name: pokemon.name } };
   });
 
   return {
@@ -34,12 +34,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params;
 
-  const response = await getPokemonByName(name);
-  const nextPokemon = await getPokemonByName(parseInt(response.id + 1, 10));
-
+  const pokemon = await getPokemonByName(name);
+  const areas = await getPokemonAreas(pokemon.id);
+  const nextPokemon = await getPokemonByName(parseInt(pokemon.id + 1, 10));
+  console.log(areas);
   return {
     props: {
-      pokemon: response,
+      pokemon: { ...pokemon, areas },
       nextPokemon,
     },
     revalidate: 240,

@@ -36,4 +36,15 @@ export const getPokemonByName = async (name) => {
     return pokemon;
 };
 
-export default { getAllPokemons, getPokemon, getPokemonByName };
+export const getPokemonAreas = async (name) => {
+    const areas = await axios
+        .get(`${process.env.REACT_APP_URL_API_POKEMON}pokemon/${name}/encounters`)
+        .then((response) => {
+            return response.data;
+        })
+        .catch(() => {});
+
+    return areas;
+};
+
+export default { getAllPokemons, getPokemon, getPokemonByName, getPokemonAreas };
