@@ -9,7 +9,6 @@
 # production
 .next
 /build
-.env
 
 # misc
 .DS_Store

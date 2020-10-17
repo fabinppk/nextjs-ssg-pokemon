@@ -62,7 +62,6 @@ export default function Card({ pokemon, nextPokemon }) {
   };
 
   const handleError = (e) => {
-    console.log(e.target);
     e.target.onerror = null;
     e.target.src = pokemon.sprites.front_default;
   };

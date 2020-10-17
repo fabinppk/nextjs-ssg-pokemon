@@ -1,0 +1,9 @@
+.page-content {
+    min-width: 1366px;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        min-width: initial;
+    }
+}

@@ -12,7 +12,7 @@ export default function Pokemon({ pokemon, nextPokemon }) {
   }
 
   return (
-    <div style={{ minWidth: '1366px' }}>
+    <div className="page-content">
       <Card pokemon={pokemon} nextPokemon={nextPokemon} />
     </div>
   );
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const pokemon = await getPokemonByName(name);
   const areas = await getPokemonAreas(pokemon.id);
   const nextPokemon = await getPokemonByName(parseInt(pokemon.id + 1, 10));
-  console.log(areas);
+
   return {
     props: {
       pokemon: { ...pokemon, areas },

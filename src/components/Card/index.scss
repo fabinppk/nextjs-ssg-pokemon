@@ -602,3 +602,85 @@ section main .main-content footer .image-clips img:nth-of-type(3) {
 section main .main-content footer .image-clips img:hover {
     border: 2px solid var(--light-blue);
 }
+
+@media (max-width: 768px) {
+    section {
+        justify-content: flex-end;
+        min-height: 730px;
+    }
+
+    section aside {
+        display: none;
+    }
+
+    section main .main-content {
+        padding: 2em;
+        margin-top: 5em;
+    }
+
+    section main .main-content .block-column {
+        justify-content: start;
+    }
+
+    section main .main-content > div {
+        margin: 0;
+    }
+
+    section main .main-content > div h1 {
+        font-size: 3rem;
+    }
+
+    section main > img {
+        width: 50%;
+        min-width: 100px;
+        max-width: 172px;
+        position: absolute;
+        padding: 0;
+        top: 60px;
+        left: 30px;
+    }
+
+    .page-content {
+        min-width: initial;
+    }
+}
+
+@media (max-width: 540px) {
+    header {
+        padding: 0;
+    }
+
+    header figure img {
+        width: 80px;
+        margin-left: 10px;
+    }
+
+    section {
+        height: initial;
+    }
+
+    section main {
+        top: 96px;
+        height: initial;
+        min-height: initial;
+        align-self: flex-start;
+    }
+
+    section main .main-content .block-areas {
+        width: 100%;
+    }
+
+    section main .main-content footer {
+        margin-right: 0;
+    }
+
+    section main .main-content footer .image-clips {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    section main .main-content footer .image-clips img {
+        margin: 0;
+        width: 45%;
+    }
+}
