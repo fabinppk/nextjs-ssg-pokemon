@@ -93,6 +93,7 @@ export default function Card({ pokemon, nextPokemon }) {
         console.log('We dont find any pokémon. :/');
       }
     };
+    setBodyColor();
     getPokemonByNames();
   }, [searchInput]);
 
