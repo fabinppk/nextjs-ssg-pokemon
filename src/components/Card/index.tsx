@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getPokemonByName } from '../../utils/requestApi';
+import { useRouter } from 'next/router';
+import Input from '../Input';
 
 export default function Card({ pokemon, nextPokemon }) {
+  const router = useRouter();
+
+  const [searchInput, setSearchInput] = useState('');
+
   const defineGalery = () => {
     let galery = [];
     galery.push(
@@ -60,20 +67,35 @@ export default function Card({ pokemon, nextPokemon }) {
     e.target.src = pokemon.sprites.front_default;
   };
 
+  useEffect(() => {
+    const getPokemonByNames = async () => {
+      let pokemon = null;
+      if (searchInput) {
+        pokemon = await getPokemonByName(searchInput.toLowerCase());
+        if (pokemon) {
+          router.push(`/pokemon/${pokemon.name}`);
+        }
+      } else if (!pokemon) {
+        console.log('We dont find any pokémon. :/');
+      }
+    };
+
+    getPokemonByNames();
+    // eslint-disable-next-line
+  }, [searchInput]);
+
   return (
     <>
       <header>
         <figure>
           <img src="/img/logo_pokemon.png" alt="logo" />
         </figure>
-        <div className="inputText">
-          <i className="fas fa-search"></i>
-          <input type="text" placeholder="Search pokémons..." />
-        </div>
-        <span className="header-menu">
-          <p>Menu</p>
-          <i className="fas fa-ellipsis-v"></i>
-        </span>
+        <Input
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+        />
       </header>
       <section>
         <aside>
@@ -105,10 +127,12 @@ export default function Card({ pokemon, nextPokemon }) {
                     <h3 className="type">Attacks:</h3>
                     {defineAttacks()}
                   </div>
-                  <div className="block-areas">
-                    <h3 className="type">where to find:</h3>
-                    {defineAreas()}
-                  </div>
+                  {pokemon.areas.length > 0 && (
+                    <div className="block-areas">
+                      <h3 className="type">where to find:</h3>
+                      {defineAreas()}
+                    </div>
+                  )}
                 </section>
               </span>
               {/* <img src="/img/insideoutlogo.png" alt="Inside-out-logo" /> */}

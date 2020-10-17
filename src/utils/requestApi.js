@@ -24,7 +24,7 @@ export const getPokemon = async (url) => {
 
 export const getPokemonByName = async (name) => {
     const pokemon = await axios
-        .get(`${process.env.REACT_APP_URL_API_POKEMON}pokemon/${name}`)
+        .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then((response) => {
             return response.data;
         })
