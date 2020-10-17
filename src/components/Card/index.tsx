@@ -66,6 +66,18 @@ export default function Card({ pokemon, nextPokemon }) {
     e.target.src = pokemon.sprites.front_default;
   };
 
+  const setBodyColor = () => {
+    if (!window || !document) return;
+    const el = document.querySelectorAll('section main');
+    if (!el[0]) return;
+    const actualTypeColor = window.getComputedStyle(el[0], null).getPropertyValue('background');
+    const pokemonName = el[0].querySelectorAll('.main-content > div .name')[0].textContent;
+    const theme = `${actualTypeColor.split(',')[4]},${actualTypeColor.split(',')[5]},${
+      actualTypeColor.split(',')[6]
+    }`;
+    document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);
+  };
+
   useEffect(() => {
     const getPokemonByNames = async () => {
       let pokemon = null;
@@ -78,9 +90,8 @@ export default function Card({ pokemon, nextPokemon }) {
         console.log('We dont find any pokémon. :/');
       }
     };
-
+    setBodyColor();
     getPokemonByNames();
-    // eslint-disable-next-line
   }, [searchInput]);
 
   return (
