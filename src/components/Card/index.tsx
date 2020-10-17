@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getPokemonByName } from '../../utils/requestApi';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import Input from '../Input';
 
 export default function Card({ pokemon, nextPokemon }) {
@@ -75,6 +75,10 @@ export default function Card({ pokemon, nextPokemon }) {
     const theme = `${actualTypeColor.split(',')[4]},${actualTypeColor.split(',')[5]},${
       actualTypeColor.split(',')[6]
     }`;
+    if (window.innerWidth <= 768) {
+      console.log('MENOR');
+      document.querySelectorAll('input')[0].blur();
+    }
     document.querySelectorAll('meta[name="theme-color"')[0].setAttribute('content', theme);
   };
 
@@ -90,9 +94,16 @@ export default function Card({ pokemon, nextPokemon }) {
         console.log('We dont find any pokémon. :/');
       }
     };
-    setBodyColor();
     getPokemonByNames();
   }, [searchInput]);
+
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', setBodyColor);
+
+    return () => {
+      Router.events.off('routeChangeComplete', setBodyColor);
+    };
+  });
 
   return (
     <>
